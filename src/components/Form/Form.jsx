@@ -7,7 +7,6 @@ import { addContact } from 'redux/contactsReducer';
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contact.contacts);
-  console.log(contacts);
   return (
     <>
       <Formik
