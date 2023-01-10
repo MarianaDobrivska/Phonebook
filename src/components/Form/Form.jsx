@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid';
 import s from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsReducer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,9 @@ export const ContactForm = () => {
                 contact.name.toLowerCase() === values.name.toLowerCase()
             )
           ) {
-            alert(`${values.name} is already in contacts.`);
+            toast.info(`${values.name} is already in contacts.`, {
+              position: toast.POSITION.TOP_CENTER,
+            });
             resetForm();
             return '';
           }
@@ -60,6 +64,7 @@ export const ContactForm = () => {
           </button>
         </Form>
       </Formik>
+      <ToastContainer />
     </>
   );
 };
