@@ -20,7 +20,7 @@ export const ContactForm = () => {
                 contact.name.toLowerCase() === values.name.toLowerCase()
             )
           ) {
-            toast.info(`${values.name} is already in contacts.`, {
+            toast.info(`${values.name} is already in your contacts.`, {
               position: toast.POSITION.TOP_CENTER,
               theme: 'colored',
             });
