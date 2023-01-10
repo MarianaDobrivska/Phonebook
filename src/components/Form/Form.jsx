@@ -1,16 +1,28 @@
 import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
 import s from './Form.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsReducer';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contact.contacts);
+  console.log(contacts);
   return (
     <>
       <Formik
         initialValues={{ name: '', number: '' }}
         onSubmit={(values, { resetForm }) => {
+          if (
+            contacts.find(
+              contact =>
+                contact.name.toLowerCase() === values.name.toLowerCase()
+            )
+          ) {
+            alert(`${values.name} is already in contacts.`);
+            resetForm();
+            return '';
+          }
           const item = {
             ...values,
             id: nanoid(),
