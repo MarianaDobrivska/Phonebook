@@ -1,9 +1,11 @@
 import { Formik, Form, Field } from 'formik';
-import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import s from './Form.module.css';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsReducer';
 
-export const ContactForm = ({ addContact }) => {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <Formik
@@ -13,7 +15,7 @@ export const ContactForm = ({ addContact }) => {
             ...values,
             id: nanoid(),
           };
-          addContact(item);
+          dispatch(addContact(item));
           resetForm();
         }}
       >
@@ -49,8 +51,4 @@ export const ContactForm = ({ addContact }) => {
       </Formik>
     </>
   );
-};
-
-ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
 };

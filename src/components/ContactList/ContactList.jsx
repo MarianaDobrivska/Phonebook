@@ -1,11 +1,16 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import s from './ContactList.module.css';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-export const ContactList = ({ contacts, filter, onDeleteContact }) => {
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+export const ContactList = () => {
+  const getFilteredContacts = state => {
+    const { contacts, filter } = state.contact;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+  const filteredContacts = useSelector(getFilteredContacts);
+
   return (
     <ul className={s.contactListWrapper}>
       {filteredContacts.map(contact => (
@@ -14,15 +19,8 @@ export const ContactList = ({ contacts, filter, onDeleteContact }) => {
           number={contact.number}
           key={contact.id}
           id={contact.id}
-          onDeleteContact={onDeleteContact}
         />
       ))}
     </ul>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filter: PropTypes.string.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
 };

@@ -1,8 +1,11 @@
 import s from './ContactListItem.module.css';
 import { FcPhone } from 'react-icons/fc';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeContact } from 'redux/contactsReducer';
 
-export const ContactListItem = ({ name, number, id, onDeleteContact }) => {
+export const ContactListItem = ({ name, number, id }) => {
+  const dispatch = useDispatch();
   return (
     <li key={id} id={id} className={s.listItem}>
       <div className={s.container}>
@@ -12,7 +15,7 @@ export const ContactListItem = ({ name, number, id, onDeleteContact }) => {
       <button
         className={s.button}
         type="button"
-        onClick={() => onDeleteContact(id)}
+        onClick={() => dispatch(removeContact(id))}
       >
         Delete
       </button>
@@ -24,5 +27,4 @@ ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
 };
