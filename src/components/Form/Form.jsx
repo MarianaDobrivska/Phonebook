@@ -22,6 +22,7 @@ export const ContactForm = () => {
           ) {
             toast.info(`${values.name} is already in contacts.`, {
               position: toast.POSITION.TOP_CENTER,
+              theme: 'colored',
             });
             resetForm();
             return '';
