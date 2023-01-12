@@ -2,7 +2,7 @@ import s from './ContactListItem.module.css';
 import { FcPhone } from 'react-icons/fc';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/contactsReducer';
+import { removeContact } from 'redux/contactsOperations';
 
 export const ContactListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();

@@ -1,17 +1,15 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import s from './ContactList.module.css';
 import { useSelector } from 'react-redux';
+import { getIsLoading, getFilteredContacts } from 'redux/contactsSelectors';
 
 export const ContactList = () => {
-  const getFilteredContacts = state => {
-    const { contacts, filter } = state.contact;
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
   const filteredContacts = useSelector(getFilteredContacts);
+  const isLoading = useSelector(getIsLoading);
 
-  return (
+  return isLoading ? (
+    <h2>...Loading</h2>
+  ) : (
     <ul className={s.contactListWrapper}>
       {filteredContacts.map(contact => (
         <ContactListItem

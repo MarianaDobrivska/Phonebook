@@ -2,13 +2,14 @@ import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
 import s from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsReducer';
+import { addContact } from 'redux/contactsOperations';
+import { getContacts } from 'redux/contactsSelectors';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contact.contacts);
+  const contacts = useSelector(getContacts);
   return (
     <>
       <Formik

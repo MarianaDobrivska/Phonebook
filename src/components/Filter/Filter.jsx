@@ -1,10 +1,11 @@
 import s from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from 'redux/contactsReducer';
+import { getContactsFilter } from 'redux/contactsSelectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filterValue = useSelector(state => state.filter);
+  const filterValue = useSelector(getContactsFilter);
 
   return (
     <label htmlFor="filter" className={s.filterLabel}>
