@@ -1,42 +1,31 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsContactsEmpty, getError } from 'redux/contactsSelectors';
-import { fetchContacts } from 'redux/contactsOperations';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { ContactForm } from './Form/Form';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { SignUpPage } from 'pages/Registration/RegisterPage';
+import { LogInPage } from 'pages/LogIn/LogInPage';
+import { getIsLoggedIn, getIsFetchingCurrent } from 'redux/auth/authSelectors';
+import { PhoneBookPage } from 'pages/Contacts/PhonebookPage';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from 'pages/HomePage/HomePage';
+import { getCurrentUser } from 'service/connectionsAPI';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isContactsEmpty = useSelector(getIsContactsEmpty);
-  const Error = useSelector(getError);
+  const isFetchingCurrentUser = useSelector(getIsFetchingCurrent);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch, isContactsEmpty]);
-
-  if (!Error) {
-    toast.error('Something went wrong. Please try again!', {
-      position: toast.POSITION.TOP_CENTER,
-      theme: 'colored',
-    });
-  }
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   return (
-    <div className="wrapper">
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      {isContactsEmpty ? (
-        <h2>Contactbook is empty, please add your first contact!</h2>
-      ) : (
-        <ContactList />
-      )}
-      <ToastContainer />
-    </div>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="login" element={<LogInPage />} />
+        <Route path="register" element={<SignUpPage />} />
+        <Route path="contacts" element={<PhoneBookPage />} />
+      </Route>
+    </Routes>
   );
 };

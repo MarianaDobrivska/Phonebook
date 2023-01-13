@@ -2,8 +2,8 @@ import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
 import s from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsOperations';
-import { getContacts } from 'redux/contactsSelectors';
+import { addContact } from 'redux/contacts/contactsOperations';
+import { getContacts } from 'redux/contacts/contactsSelectors';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

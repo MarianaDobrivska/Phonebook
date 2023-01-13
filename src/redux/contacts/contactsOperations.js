@@ -4,13 +4,14 @@ import {
   addContactApi,
   getContactsApi,
   removeContactApi,
-} from 'service/mockAPI';
+} from 'service/connectionsAPI';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/getAll',
   async (_, thunkAPI) => {
     try {
       const data = await getContactsApi();
+      console.log(data);
       return data;
     } catch (error) {
       console.log(error.message);
