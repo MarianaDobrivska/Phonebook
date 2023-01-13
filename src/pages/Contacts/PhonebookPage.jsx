@@ -12,18 +12,17 @@ export const PhoneBookPage = () => {
   const dispatch = useDispatch();
   const isContactsEmpty = useSelector(getIsContactsEmpty);
   const Error = useSelector(getError);
-  const loggedIn = false;
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  // if (!Error) {
-  //   toast.error('Something went wrong. Please try again!', {
-  //     position: toast.POSITION.TOP_CENTER,
-  //     theme: 'colored',
-  //   });
-  // }
+  if (!Error) {
+    toast.error('Something went wrong. Please try again!', {
+      position: toast.POSITION.TOP_CENTER,
+      theme: 'colored',
+    });
+  }
 
   return (
     <div className="wrapper">
