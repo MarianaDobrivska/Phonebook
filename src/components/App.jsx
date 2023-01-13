@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -10,6 +10,9 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { getCurrentUser } from 'service/connectionsAPI';
+
+// const SignUpPage = lazy(() => import('../pages/Registration/RegisterPage'));
+// const LogInPage = lazy(() => import('../pages/LogIn/LogInPage'));
 
 export const App = () => {
   const dispatch = useDispatch();

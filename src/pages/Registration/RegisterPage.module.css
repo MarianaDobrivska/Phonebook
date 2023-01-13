@@ -7,12 +7,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-55%, -60%);
+  background-color: rgb(237, 232, 226);
 
   padding: 10px 30px 20px;
   outline: 1px solid rgba(226, 221, 221, 0.704);
 
-  box-shadow: rgba(127, 140, 151, 0.48) 6px 2px 16px 0px,
-    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  box-shadow: rgba(69, 64, 64, 0.446) 0px 22px 70px 4px;
 }
 
 .title {
@@ -39,7 +39,6 @@
   font-family: inherit;
   outline: none;
   transition: all 300ms linear;
-  border: 2px solid rgba(178, 163, 163, 0.704);
 }
 
 .input:focus {

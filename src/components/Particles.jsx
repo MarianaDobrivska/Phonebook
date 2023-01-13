@@ -4,16 +4,13 @@ import { loadFull } from 'tsparticles';
 
 export const ParticlesDesign = () => {
   const particlesInit = useCallback(async engine => {
-    console.log(engine);
     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async container => {
-    await console.log(container);
-  }, []);
+  const particlesLoaded = useCallback(async container => {}, []);
 
   return (
     <Particles
@@ -46,7 +43,7 @@ export const ParticlesDesign = () => {
           },
           modes: {
             attract: {
-              distance: 200,
+              distance: 400,
               duration: 0.9,
               easing: 'ease-out-quad',
               factor: 1,
@@ -100,7 +97,7 @@ export const ParticlesDesign = () => {
               maxSpeed: 10,
               easing: 'ease-out-quad',
               divs: {
-                distance: 200,
+                distance: 400,
                 duration: 0.4,
                 factor: 100,
                 speed: 1,
