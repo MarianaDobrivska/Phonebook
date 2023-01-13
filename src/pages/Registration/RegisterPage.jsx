@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import s from './RegisterPage.module.css';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/authOperations';
+import { ParticlesDesign } from 'components/Particles';
 
 export const SignUpPage = () => {
   const dispatch = useDispatch();

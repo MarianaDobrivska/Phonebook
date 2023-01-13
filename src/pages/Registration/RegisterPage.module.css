@@ -39,6 +39,7 @@
   font-family: inherit;
   outline: none;
   transition: all 300ms linear;
+  border: 2px solid rgba(178, 163, 163, 0.704);
 }
 
 .input:focus {

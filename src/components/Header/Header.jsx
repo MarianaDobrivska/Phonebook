@@ -7,7 +7,13 @@ import { getIsLoggedIn } from 'redux/auth/authSelectors';
 export const Header = () => {
   const isLoggedInUser = useSelector(getIsLoggedIn);
   return (
-    <header>
+    <header
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '20px',
+      }}
+    >
       <Navigation />
       {isLoggedInUser ? <UserMenu /> : <AuthNav />}
     </header>

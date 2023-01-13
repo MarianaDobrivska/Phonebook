@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import s from '../Registration/RegisterPage.module.css';
 import { useDispatch } from 'react-redux';
 import { logInUser } from 'redux/auth/authOperations';
+import { ParticlesDesign } from 'components/Particles';
 
 export const LogInPage = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ export const LogInPage = () => {
           LOGIN
         </button>
       </Form>
+      <ParticlesDesign />
     </Formik>
   );
 };
